@@ -1,0 +1,37 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/edit.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form 
+    id="new-form" 
+    action="/flights/<%= flight._id %>?_method=PUT" 
+    method="POST"
+  >
+  <label for="airline-select">Airline:</label>
+  <select name="airline" id="airline-select">
+    <option value="<%= flight.airline %>"><%= flight.airline %></option>
+    <option value="American Airlines">American Airlines</option>
+    <option value="Southwest Airlines">Southwest Airlines</option>
+    <option value="United Airlines">United Airlines</option>
+  </select>
+  <label for="airport-select">Airport:</label>
+  <select name="airport" id="airport-select">
+    <option value="<%= flight.airport %>"><%= flight.airport %></option>
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select>
+  <label for="flight-num-input">Flight Number:</label>
+    <input type="text" value="<%= flight.flightNo %>" name="flightNo" id="flight-num-input">
+    <label for="depart-date-input">Departure Date:</label>
+    <!-- need to fix the autocomplete value for departure date/time -->
+    <input type="datetime-local" value="<%= flight.departs %>" name="departs" id="depart-date-input">
+    <button type="submit">Save Flight Details</button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>
