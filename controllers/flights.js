@@ -14,12 +14,14 @@ function index(req, res) {
 }
 
 function newFlight(req, res) {
+  const newFlight = new Flight()
+  // Obtain the default date
+  const dt = newFlight.departs
+  // Format the date for the value attribute of the input
+  const departsDate = dt.toISOString().slice(0, 16)
   res.render('flights/new', {
     title: 'Add Flight',
-  })
-  .catch(error => {
-    console.log(`🚨💥🖍️`, error)
-    res.redirect('/')
+    departsDate
   })
 }
 
@@ -37,10 +39,13 @@ function show(req, res) {
 }
 
 function edit(req, res) {
+  const dt = Flight().departs
+  const departsDate = dt.toISOString().slice(0, 16)
   Flight.findById(req.params.flightId).then(flight => {
     res.render('flights/edit', {
       title: 'Edit Flight Details',
-      flight: flight
+      flight: flight,
+      departsDate
     })
   })
   .catch(error => {
@@ -73,6 +78,9 @@ function deleteFlight(req, res) {
 }
 
 function update(req, res) {
+  for (let key in req.body) {
+    if(req.body[key] === "") delete req.body[key]
+  }
   Flight.findByIdAndUpdate(req.params.flightId, req.body, {new:true}).then(flight => {
     res.redirect(`/flights/${flight._id}`)
   })
