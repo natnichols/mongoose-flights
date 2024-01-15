@@ -12,7 +12,6 @@ const flightSchema = new Schema({
   airport: {
     type: String,
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
-    /* insert functionality to make default DEN - need mongoose middleware */
     required: true
   },
   flightNo: {
