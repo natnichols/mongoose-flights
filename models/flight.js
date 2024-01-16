@@ -13,6 +13,8 @@ const ticketSchema = new Schema({
     min: 0,
     required: true
   },
+}, {
+  timestamps: true
 })
 
 const flightSchema = new Schema({
