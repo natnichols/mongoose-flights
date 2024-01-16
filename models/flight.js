@@ -3,6 +3,18 @@ import mongoose from 'mongoose'
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema
 
+const ticketSchema = new Schema({
+  seat: {
+    type: String, 
+    match: /[A-F][1-9]\d?/
+  }, 
+  price: {
+    type: Number,
+    min: 0,
+    required: true
+  },
+})
+
 const flightSchema = new Schema({
   airline: {
     type: String,
@@ -24,6 +36,7 @@ const flightSchema = new Schema({
     type: Date,
     default: Date.now() + 365*24*60*60000
   },
+  tickets: [ticketSchema],
 }, {
   timestamps: true
 })
