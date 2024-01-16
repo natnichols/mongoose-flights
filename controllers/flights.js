@@ -1,7 +1,7 @@
 import { Flight } from '../models/flight.js'
 
 function index(req, res) {
-  Flight.find({}).then(flights => {
+  Flight.find({}).sort({departs: 'asc'}).then(flights => {
     res.render('flights/index', {
       flights: flights,
       title: 'All Flights',
@@ -28,7 +28,7 @@ function newFlight(req, res) {
 function show(req, res) {
   Flight.findById(req.params.flightId).then(flight => {
     res.render('flights/show', {
-      title: 'Flight Details',
+      title: `Flight Details`,
       flight: flight
     })
   })
@@ -39,13 +39,12 @@ function show(req, res) {
 }
 
 function edit(req, res) {
-  const dt = Flight().departs
-  const departsDate = dt.toISOString().slice(0, 16)
   Flight.findById(req.params.flightId).then(flight => {
+    const departDefaultDate = flight.departs.toISOString().slice(0, 16)
     res.render('flights/edit', {
-      title: 'Edit Flight Details',
+      title: `Edit Flight ${req.params.flightId}:`,
       flight: flight,
-      departsDate
+      departDefaultDate: departDefaultDate
     })
   })
   .catch(error => {

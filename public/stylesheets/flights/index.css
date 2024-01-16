@@ -33,3 +33,14 @@ table td {
 #list a:hover {
   background-color: white;
 }
+
+form > button {
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  font-size: 18px;
+}
+
+form > button:hover {
+  background-color: lightpink;
+}
