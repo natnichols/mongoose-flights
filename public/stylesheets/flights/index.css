@@ -32,6 +32,7 @@ table td {
 
 #list a:hover {
   background-color: white;
+  cursor: pointer;
 }
 
 form > button {
@@ -43,4 +44,5 @@ form > button {
 
 form > button:hover {
   background-color: lightpink;
+  cursor: pointer;
 }

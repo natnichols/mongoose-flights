@@ -50,4 +50,10 @@ a > button {
 
 a > button:hover {
   background-color: turquoise;
+  cursor: pointer;
+}
+
+form > button:hover {
+  background-color: lightgreen;
+  cursor: pointer;
 }
