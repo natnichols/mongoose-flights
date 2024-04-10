@@ -2,4 +2,4 @@
 
 ## [Deployment Link](https://mongoose-flights-nn.fly.dev/ "Mongoose Flights")
 
-#### e-gen-replacement template forked from [GA's SEI Github (Private Repository)](https://github.com/SEI-Remote "SEI-Remote GitHub Profile")
+#### e-gen-replacement Template is from [GA's SEI Github Repository](https://github.com/SEI-Remote/e-gen-replacement "SEI-Remote e-gen-replacement Template GitHub Repo")
